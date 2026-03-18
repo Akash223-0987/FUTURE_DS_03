@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data & Outputs (Best to keep raw data but ignore processed/temp)
+data/processed/
+outputs/*.png
+output_log.txt
+cols.txt
+
+# Notebook Checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/

@@ -26,16 +26,19 @@ This project analyzes how users move through a marketing funnel and identifies *
 ```bash
 ├── data/
 │   ├── raw/                  # Original CRM data (lead_scoring.csv)
-│   └── processed/            # Cleaned/engineered CSVs for Power BI
+│   └── processed/            # Cleaned/engineered CSVs (Power BI data source)
 ├── src/
-│   ├── data_preprocessing.py # Cleaning, missing values, typing
-│   ├── feature_engineering.py# Funnel flags (Engaged/Qualified/Customer)
-│   └── funnel_analysis.py    # KPIs, channel & drop-off analysis
+│   ├── data_preprocessing.py # Cleaning, missing values, and data typing
+│   ├── feature_engineering.py# Funnel logic & behavioral flags
+│   └── funnel_analysis.py    # Channel KPIs and drop-off calculations
 ├── notebooks/
-│   └── Funnel_Analysis_Visualization.ipynb
-├── outputs/                  # Saved charts (PNG)
-├── requirements.txt
-└── main.py                   # End-to-end pipeline
+│   └── Funnel_Analysis_Visualization.ipynb # Interactive visual analysis
+├── powerbi_dashboard/
+│   └── Marketing Funnel & Conversion Performance Analysis.pbix # Interactive dashboard
+├── outputs/                  # Exported static charts (PNG)
+├── main.py                   # Master script to run the full pipeline
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project documentation
 ```
 
 ---
@@ -116,15 +119,19 @@ The processed outputs power an interactive dashboard featuring:
 
 ---
 
-## 📦 Outputs
+## 📦 Final Deliverables
 
-* `data/processed/lead_data_final.csv`
-* `data/processed/funnel_summary.csv`
-* `data/processed/channel_performance.csv`
-* `outputs/*.png`
+The automated pipeline generates several outputs located in the `data/processed/` and `outputs/` directories:
+
+*   **Cleaned Datasets**: All behavioral flags and funnel markers (`lead_data_final.csv`).
+*   **KPI Exports**: Aggregated insights for Channel and Funnel performance.
+*   **Static Visuals**: Professional charts for documentation and pre-viewing.
+*   **Power BI File**: The primary interactive dashboard logic.
 
 ---
 
 ## 👨‍💻 Author
 
-Created for the **Future Interns – Marketing Analytics Project (Task 3)**.
+**Task 3 Solution developed by [D AKASH DORA]**
+*Data Science Intern at Future Interns*
+*Contact: [akashdora2@gmail.com]*

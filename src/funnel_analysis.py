@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
 import os
+import plotly.graph_objects as go
+import plotly.express as px
 
 PROCESSED_DIR = "data/processed"
 OUTPUT_DIR = "outputs"
@@ -74,10 +76,39 @@ def plot_outputs(metrics, channel_df):
     print(f"[OK] Plots saved to {OUTPUT_DIR}")
     plt.close()
 
+def plot_plotly_funnel(metrics):
+    """Create an interactive Plotly funnel chart."""
+    stages = ["Visitors", "Engaged", "Qualified", "Customers"]
+    vals = [metrics["Total Visitors"], metrics["Total Engaged"], metrics["Total Qualified"], metrics["Total Customers"]]
+    
+    fig = go.Figure(go.Funnel(
+        y = stages,
+        x = vals,
+        textinfo = "value+percent initial+percent previous",
+        marker = {"color": ["#3366CC", "#DC3912", "#FF9900", "#109618"]},
+        connector = {"line": {"color": "royalblue", "width": 4}}
+    ))
+    
+    fig.update_layout(
+        title_text="Marketing Funnel Analysis",
+        title_x=0.5,
+        template="plotly_dark",
+        font=dict(family="Arial", size=14)
+    )
+    
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    html_path = f"{OUTPUT_DIR}/funnel_chart.html"
+    if os.path.exists(html_path):
+        os.remove(html_path)
+        
+    fig.write_image(f"{OUTPUT_DIR}/funnel_plotly.png", scale=2)
+    print(f"[OK] Static Plotly Funnel saved to {OUTPUT_DIR}/funnel_plotly.png")
+
 def run(df, metrics, drop_stages):
     channel_df, best, worst = channel_analysis(df)
     save_outputs(df, metrics, drop_stages, channel_df)
     plot_outputs(metrics, channel_df)
+    plot_plotly_funnel(metrics)
     
     print("\n" + "=" * 55)
     print(f"  Overall Conv Rate    : {metrics['Overall Conversion (%)']}%")

@@ -4,15 +4,16 @@ def add_funnel_flags(df):
     """
     Apply sequential funnel flagging:
     All Visitors -> Engaged (Time spent) -> Qualified (Page views) -> Customers (Converted)
+    Ensure each stage is a subset of the previous one for valid funnel reporting.
     """
-    # 1. Engaged: Spent more than 300 seconds
-    df["Engaged"] = df["Total Time Spent on Website"] > 300
-    
-    # 2. Qualified: At least Engaged AND Viewed > 3 pages
-    df["Qualified"] = df["Engaged"] & (df["Page Views Per Visit"] > 3)
-    
     # 3. Customer: Successfully Converted (Final step)
     df["Customer"] = df["Converted"] == 1
+    
+    # 2. Qualified: Met behavioral qualification OR became a Customer
+    df["Qualified"] = ((df["Total Time Spent on Website"] > 300) & (df["Page Views Per Visit"] > 3)) | df["Customer"]
+    
+    # 1. Engaged: Spent more than 300 seconds OR is Qualified (which includes Customers)
+    df["Engaged"] = (df["Total Time Spent on Website"] > 300) | df["Qualified"]
     
     return df
 

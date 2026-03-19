@@ -2,4 +2,6 @@ pandas
 numpy
 matplotlib
 seaborn
+plotly
+kaleido
 jupyter

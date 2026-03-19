@@ -24,6 +24,8 @@ The goal of this analysis is to identify key drop-off stages in the marketing fu
 │   ├── data_preprocessing.py # Handles cleaning and missing values
 │   ├── feature_engineering.py# Creates funnel flags and metrics
 │   └── funnel_analysis.py   # Conducts channel and drop-off analysis
+├── notebooks/
+│   └── Funnel_Analysis_Visualization.ipynb # Interactive analysis & charts
 ├── outputs/                 # Visualization charts (PNG)
 ├── requirements.txt         # Project dependencies
 └── main.py                  # Master pipeline script

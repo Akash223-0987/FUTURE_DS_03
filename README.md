@@ -53,6 +53,27 @@ python -m venv venv
 pip install -r requirements.txt
 python main.py
 ```
+---
+## 📂 Dataset
+
+The project uses a **Lead Scoring (CRM) Dataset** containing user behavior, engagement metrics, and conversion information.
+
+Source: Kaggle  
+[https://www.kaggle.com/datasets/amritachatterjee09/lead-scoring-dataset]
+
+### 📌 Key Features:
+
+* **Lead Source** (Google, Direct, Facebook, etc.)
+* **Time Spent on Website**
+* **Page Views Per Visit**
+* **Converted (0/1)**
+* **Country / City**
+
+### 🎯 Purpose:
+
+Used to build a **marketing funnel (Visitors → Engaged → Qualified → Customers)**, analyze drop-offs, and evaluate conversion performance across channels.
+
+---
 
 ---
 

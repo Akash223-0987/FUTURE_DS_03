@@ -111,7 +111,7 @@ The processed outputs power an interactive dashboard featuring:
 
 * **Python 3.11+**
 * **Pandas** (data wrangling)
-* **Seaborn/Matplotlib** (EDA & charts)
+* **Seaborn/Matplotlib/Plotly** (EDA & charts)
 * **Power BI** (dashboard)
 
 ---
